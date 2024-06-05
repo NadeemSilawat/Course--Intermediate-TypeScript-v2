@@ -9,9 +9,9 @@ Classes
 const is_a_value = 4
 type is_a_type = {}
 namespace is_a_namespace {
-  const foo = 17
+    const foo = 17
 }
- 
+
 // how to test for a (value | namespace)
 const x = is_a_value // the value position (RHS of =).
 
@@ -30,32 +30,56 @@ is_a_namespace
 $.ajax({
     url: "/api/getWeather",
     data: {
-      zipcode: 97201,
+        zipcode: 97201,
     },
     success: function (result) {
-      $("#weather-temp")[0].innerHTML =
-        "<strong>" + result + "</strong> degrees"
+        $("#weather-temp")[0].innerHTML =
+            "<strong>" + result + "</strong> degrees"
     },
-  })
-  // a `document.querySelectorAll` kind of function
-  $("h1.title").forEach((node) => {
+})
+// a `document.querySelectorAll` kind of function
+$("h1.title").forEach((node) => {
     node.tagName // "h1"
-           
-  })
+
+})
 
 
 
 
-  function $(selector: string): NodeListOf<Element> {
+function $(selector: string): NodeListOf<Element> {
     return document.querySelectorAll(selector)
-  }
-  namespace $ {
+}
+namespace $ {
     export function ajax(arg: {
-      url: string
-      data: any
-      success: (response: any) => void
+        url: string
+        data: any
+        success: (response: any) => void
     }): Promise<any> {
-      return Promise.resolve()
+        return Promise.resolve()
     }
-  }
-  
+}
+
+
+
+
+
+//Classes
+
+class Fruit {
+    name?: string
+    mass?: number
+    color?: string
+    static createBanana(): Fruit {
+        return { name: "banana", color: "yellow", mass: 183 }
+    }
+}        
+
+// how to test for a value
+const valueTest = Fruit // Fruit is a value!
+valueTest.createBanana
+
+ 
+// how to test for a type
+let typeTest: Fruit = {} as any // Fruit is a type!
+typeTest.color
+
