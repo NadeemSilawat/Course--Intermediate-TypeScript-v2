@@ -83,15 +83,15 @@ if (typeof myUnknown === "string") {
 // }
 
 function doSomethingRisky() {
-    if (Math.random() > 0.5) return "ok"
-    else if (Math.random() > 0.5) throw new Error("Bad luck!")
-    else throw "Really bad luck"
+  if (Math.random() > 0.5) return "ok"
+  else if (Math.random() > 0.5) throw new Error("Bad luck!")
+  else throw "Really bad luck"
 }
 
 try {
-    doSomethingRisky()
+  doSomethingRisky()
 } catch (err) {
-    //  var err: unknown
+  //  var err: unknown
 
 }
 
@@ -155,14 +155,58 @@ val2 = myObj.a
 let withUndefined: {} | null | undefined = 38
 let anUnknown: unknown = "42"
   */
- 
+
 /* withoutUndefined = anUnknown // ❌
 // Type 'unknown' is not assignable to type '{} | null'.
 
 withUndefined = anUnknown // ✅
  */
 
-type NullableStringOrNumber = string | number | null | undefined;
-type StringOrNumber = NullableStringOrNumber & {}
+// type NullableStringOrNumber = string | number | null | undefined;
+// type StringOrNumber = NullableStringOrNumber & {}
+
+
+
+
+            /* Bottom type: never */
+
+/* A bottom type(symbol: ⊥) is a type that describes no possible 
+    value allowed by the system.To use our set theory mental model, 
+    we could describe this as a type representing the set { } (intentionally empty). 
+*/
+
+function obtainRandomVehicle(): any {
+  return {} as any
+}
+/// ---cut---
+class Car {
+  drive() {
+    console.log("vroom")
+  }
+}
+class Truck {
+  tow() {
+    console.log("dragging something")
+  }
+}
+
+type Vehicle = Truck | Car 
+
+let myVehicle: Vehicle = obtainRandomVehicle()
+
+// The exhaustive conditional
+if (myVehicle instanceof Truck) {
+  myVehicle.tow() // Truck
+} else if (myVehicle instanceof Car) {
+  myVehicle.drive() // Car
+} else {
+  // NEITHER!
+  const neverValue: never = myVehicle
+}
+
+
+
+
+
 
 
