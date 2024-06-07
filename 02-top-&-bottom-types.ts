@@ -175,7 +175,7 @@ withUndefined = anUnknown // ✅
     we could describe this as a type representing the set { } (intentionally empty). 
 */
 
-function obtainRandomVehicle(): any {
+/* function obtainRandomVehicle(): any {
   return {} as any
 }
 /// ---cut---
@@ -203,6 +203,50 @@ if (myVehicle instanceof Truck) {
   // NEITHER!
   const neverValue: never = myVehicle
 }
+
+
+ */
+
+// (2) Bottom : never
+
+
+function obtainRandomVehicle(): any {
+  return {} as any
+}
+/// ---cut---
+class Car {
+  drive() {
+    console.log("vroom")
+  }
+}
+class Truck {
+  tow() {
+    console.log("dragging something")
+  }
+}
+class Boat {
+  isFloating() {
+    return true
+  }
+}
+type Vehicle = Truck | Car | Boat
+
+let myVehicle: Vehicle = obtainRandomVehicle()
+
+// The exhaustive conditional
+if (myVehicle instanceof Truck) {
+  myVehicle.tow() // Truck
+} else if (myVehicle instanceof Car) {
+  myVehicle.drive() // Car
+} else {
+  // NEITHER!
+  const neverValue: never = myVehicle     // Error: Boat is not defined
+  
+}
+
+
+
+
 
 
 
