@@ -248,7 +248,7 @@ if (myVehicle instanceof Truck) {
 
       /* Unit types */
 
-      let num: 65 = 65  // represents the set { 65 }
+/*       let num: 65 = 65  // represents the set { 65 }
     
       // Nothing other than the specific value 65 will work with this type.
 
@@ -263,8 +263,21 @@ myNull = undefined  //Error : Type 'undefined' is not assignable to type 'null'.
 
  
 myUndefined = null  //Error : Type 'null' is not assignable to type 'undefined'.
+ */
 
 
+
+// the void type is almost a unit type, but it can check against undefined as well
+
+let myVoid: void = (function() {})()// invoking a void-returning IIFE
+let myNull: null = null
+let myUndefined: undefined = undefined
+ 
+myVoid = undefined
+myVoid = null  // Error : Type 'null' is not assignable to type 'void'.
+ 
+myUndefined = myVoid // Error : Type 'void' is not assignable to type 'undefined'.
+myNull = myVoid
       
 
 
