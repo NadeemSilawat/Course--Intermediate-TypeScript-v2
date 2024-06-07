@@ -97,3 +97,28 @@ try {
 
 console.log(doSomethingRisky());
 
+
+        /* Almost top type: object */
+
+        let val: object = { status: "ok" }
+        val = "foo"
+       // Type 'string' is not assignable to type 'object'.
+        val = null
+        // Type 'null' is not assignable to type 'object'.
+        val = () => "ok"
+         
+        // The type of this value cannot be modeled by an interface
+        let response:
+               
+                    // let response: {
+                    //     success: string;
+                    //     data: unknown;
+                    // } | {
+                    //     error: string;
+                    //     code: number;
+                    // }
+            { success: string, data: unknown }
+          | { error: string, code: number }
+              = { success: "ok", data: [] }
+         
+        val = response        
