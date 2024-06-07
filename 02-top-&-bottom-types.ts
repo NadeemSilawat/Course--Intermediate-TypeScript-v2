@@ -269,7 +269,7 @@ myUndefined = null  //Error : Type 'null' is not assignable to type 'undefined'.
 
 // the void type is almost a unit type, but it can check against undefined as well
 
-let myVoid: void = (function() {})()// invoking a void-returning IIFE
+/* let myVoid: void = (function() {})()// invoking a void-returning IIFE
 let myNull: null = null
 let myUndefined: undefined = undefined
  
@@ -277,8 +277,7 @@ myVoid = undefined
 myVoid = null  // Error : Type 'null' is not assignable to type 'void'.
  
 myUndefined = myVoid // Error : Type 'void' is not assignable to type 'undefined'.
-myNull = myVoid
-      
+myNull = myVoid */
 
 
 
