@@ -209,7 +209,7 @@ if (myVehicle instanceof Truck) {
 
 // (2) Bottom : never
 
-
+/* 
 function obtainRandomVehicle(): any {
   return {} as any
 }
@@ -243,9 +243,29 @@ if (myVehicle instanceof Truck) {
   const neverValue: never = myVehicle     // Error: Boat is not defined
   
 }
+ */
 
 
+      /* Unit types */
 
+      let num: 65 = 65  // represents the set { 65 }
+    
+      // Nothing other than the specific value 65 will work with this type.
+
+
+// In TypeScript, the types null and undefined are both unit types.
+      
+let myNull: null = null
+let myUndefined: undefined = undefined
+ 
+ 
+myNull = undefined  //Error : Type 'undefined' is not assignable to type 'null'.
+
+ 
+myUndefined = null  //Error : Type 'null' is not assignable to type 'undefined'.
+
+
+      
 
 
 
