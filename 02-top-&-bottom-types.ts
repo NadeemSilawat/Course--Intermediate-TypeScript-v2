@@ -6,7 +6,7 @@
 
 
         /* any */
-
+/* 
 let flexible: any = 4
 flexible = "Download some more ram"
 flexible = window.document
@@ -16,7 +16,7 @@ flexible = setTimeout
 flexible.it.is.possible.to.access.any.deep.property
 
 console.log(window, Promise, setTimeout, "foo")
-
+ */
 
 
         /* unknown */
