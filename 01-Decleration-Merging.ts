@@ -25,8 +25,8 @@ is_a_namespace
 
 
 // namespace
-
-// a `fetch` kind of function
+                                        // Using JQuery
+// a `fetch` kind of function       
 $.ajax({
     url: "/api/getWeather",
     data: {
@@ -42,9 +42,6 @@ $("h1.title").forEach((node) => {
     node.tagName // "h1"
 
 })
-
-
-
 
 function $(selector: string): NodeListOf<Element> {
     return document.querySelectorAll(selector)
