@@ -32,3 +32,19 @@ interface FormInProgress {
   function submitForm() {
     formInProgress.completedAt = new Date()
   }
+
+
+
+/* --------void----------- */
+
+/* void should exclusively be used to describe that a
+ function’s return value should be ignored */
+
+ console.log(`console.log returns nothing.`)
+        
+        // TypeScript log-> : (method) Console.log(...data: any[]): void
+
+
+
+
+
