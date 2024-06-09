@@ -6,8 +6,8 @@
 
 
 /* any */
-/* 
-let flexible: any = 4
+ 
+/* let flexible: any = 4
 flexible = "Download some more ram"
 flexible = window.document
 flexible = setTimeout      
@@ -56,6 +56,7 @@ if (typeof myUnknown === "string") {
 
 /* ----------------------- */
 
+      /* Practical use of top types */
 
 // function doSomethingRisky() {
 //     if (Math.random() > 0.5) return "ok"
