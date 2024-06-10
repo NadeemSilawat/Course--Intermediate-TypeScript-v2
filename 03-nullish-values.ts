@@ -67,3 +67,38 @@ const cart: GroceryCart = {}
 cart.fruits!.push({ name: "kumkuat", qty: 1 })
 
 
+
+/* --------Definite assignment assertion----------- */
+
+
+
+/* The definite assignment !: assertion is used to suppress TypeScript’s objections 
+about a class field being used, when it can’t be proven1 that it was initialized.
+*/
+
+class ThingWithAsyncSetup {
+  setupPromise: Promise<any> 
+  isSetup: boolean
+//  Erorr : Property 'isSetup' has no initializer and is not definitely assigned in the constructor.
+ 
+  constructor() {
+    this.setupPromise = new Promise((resolve) => {
+      this.isSetup = false
+      return this.doSetup(resolve)
+    }).then(() => {
+      this.isSetup = true
+    })
+  }
+ 
+  private async doSetup(resolve: (value: unknown) => void) {
+    // some async stuff
+  }
+}
+
+
+let myThing = new ThingWithAsyncSetup()
+myThing.isSetup // what if this isn't assigned yet?
+          
+// (property) ThingWithAsyncSetup.isSetup: boolean
+
+  
