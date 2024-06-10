@@ -46,5 +46,24 @@ interface FormInProgress {
 
 
 
+/* --------Non-null assertion operator----------- */
+
+
+/* The non-null assertion operator (!.) is used 
+to cast away the possibility that a value might be null or undefined.
+*/
+
+
+type GroceryCart = {
+  fruits?: { name: string; qty: number }[]
+  vegetables?: { name: string; qty: number }[]
+}
+
+const cart: GroceryCart = {}
+
+// cart.fruits.push({ name: "kumkuat", qty: 1 })
+//   ^?Error : 'cart.fruits' is possibly 'undefined'.
+
+cart.fruits!.push({ name: "kumkuat", qty: 1 })
 
 
