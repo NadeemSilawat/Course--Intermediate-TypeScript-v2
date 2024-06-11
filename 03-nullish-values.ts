@@ -113,7 +113,7 @@ type Payment = {
   id: string
   amount: number
   createdAt: Date
-}
+} 
 type Invoice = {
   id: string
   due: number
@@ -158,3 +158,31 @@ function getLastPayment(data: ResponseData): number | undefined {
 }
 
  */
+
+/* --------Nullish coalescing ??----------- */
+
+
+/* type PlayerConfig = {
+  volume?: 0 | 25 | 50 | 75 | 100
+}
+ 
+function initializePlayer(config: PlayerConfig): void {
+  const vol = typeof config.volume === 'undefined' ? 50 : config.volume
+  setVolume(vol);
+  
+}
+
+
+
+const vol = typeof config.volume === 'undefined' ? 50 : config.volume
+
+const vol = config.volume || 50
+
+const vol = config.volume ?? 50
+ */
+
+
+
+
+
+
