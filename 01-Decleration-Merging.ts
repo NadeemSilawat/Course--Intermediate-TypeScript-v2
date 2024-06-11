@@ -69,6 +69,12 @@ class Fruit {
     static createBanana(): Fruit {
         return { name: "banana", color: "yellow", mass: 183 }
     }
+    
+    constructor(){
+        this.name = "apple";
+        this.mass = 100;    
+        this.color = "Blue"
+    }
 }        
 
 // how to test for a value
