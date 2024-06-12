@@ -1,7 +1,7 @@
 
 /* ---------ES Module imports and exports------- */
 
-    // named imports
+// named imports
 /*
     import { Blueberry, Raspberry } from './berries'
     import Kiwi from './kiwi' // default import
@@ -19,3 +19,43 @@
     export * from "./berries" // namespace re-export
  */
 
+/* ----------Importing types-------- */
+/* 
+// @filename: berries/raspberry.ts
+export class Raspberry {
+    constructor(public color: 'red' | 'black') {}
+}
+export function pickRaspberries(time: number): Raspberry[] {
+  console.log('picking raspberries')
+  return []
+}
+////////////////////////////////////////////////////////
+// @filename: index.ts
+import { Raspberry } from './berries/raspberry'
+ 
+let x: Raspberry = { color: 'red' }; */
+
+
+
+/* ----------CommonJS Interop-------- */
+
+////////////////////////////////////////////////////////
+// @filename: banana.js
+/*
+    class Banana {
+    peel() {}
+    }
+    module.exports = { Banana }
+    ////////////////////////////////////////////////////////
+    // @filename: index.js
+    const Banana = require('./banana') // CJS style import
+    const banana = new Banana()
+    banana.peel()
+ */
+
+/* 
+In this scenario, if we converted the index.js file to TypeScript, we could
+ continue to use the banana.js module as-is by using a namespace import */
+
+
+ 
