@@ -38,6 +38,16 @@ let x: Raspberry = { color: 'red' }; */
 
 
 /* ----------CommonJS Interop-------- */
+/* 
+                -----------What are .mjs, .cjs Extension.--------------
+            
+    -> .mjs and .cjs are a way to tell Node.js explicitly how to interpret your JavaScript files.
+
+
+    *  If you're using CommonJS modules with require, you should use .cjs.
+
+    *  If you're using ES modules with import, you should use .mjs.
+ */
 
 ////////////////////////////////////////////////////////
 // @filename: banana.js
@@ -93,3 +103,21 @@ In this scenario, if we converted the index.js file to TypeScript, we could
     
 
 
+    /* Importing non-TS things */
+
+    /* 
+    import img from "./file.png"
+    Cannot find module './file.png' or its corresponding type declarations.
+
+ */
+
+    
+    // Solve
+
+    // @filename: global.d.ts
+// declare module "*.png" {
+//     const imgUrl: string
+//     export default imgUrl
+//   }
+//   // @filename: component.ts
+//   import img from "./file.png"
