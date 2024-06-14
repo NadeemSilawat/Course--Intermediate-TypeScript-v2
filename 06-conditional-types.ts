@@ -61,7 +61,42 @@ type TestTenWithTwo = IsLowNumber<10 | 2>
     T = 10 | 2 —> { 10, 2 } extends { 1, 2 } —> boolean
  */
 
+    
+/*---------------- Utility types that use conditional types----------- */
 
+// built-in utility types Extract and Exclude, which are implemented with conditional types
+
+
+// Extract
+
+
+type FavoriteColors =
+  | "dark sienna"
+  | "van dyke brown"
+  | "yellow ochre"
+  | "sap green"
+  | "titanium white"
+  | "phthalo green"
+  | "prussian blue"
+  | "cadium yellow"
+  | [number, number, number]
+  | { red: number; green: number; blue: number }
+ 
+type StringColors = Extract<FavoriteColors, string>          
+// type StringColors = "dark sienna" | "van dyke brown" | "yellow ochre" | "sap green" | "titanium white" | "phthalo green" | "prussian blue" | "cadium yellow"
+
+type ObjectColors = Extract<FavoriteColors, { red: number }>          
+// type ObjectColors = {
+//     red: number;
+//     green: number;
+//     blue: number;
+// }
+
+type TupleColors
+         // type TupleColors = [number, number, number]
+
+
+  = Extract<FavoriteColors, [number, number, number]>
 
 
 
