@@ -129,10 +129,11 @@ type NonStringColors = Exclude<FavoriteColors, string>
 /**
  * Exclude from T those types that are assignable to U
  */
-type Exclude<T, U> = T extends U ? never : T
+// type Exclude<T, U> = T extends U ? never : T
 /**
  * Extract from T those types that are assignable to U
  */
-type Extract<T, U> = T extends U ? T : never
+// type Extract<T, U> = T extends U ? T : never
+
 
 
