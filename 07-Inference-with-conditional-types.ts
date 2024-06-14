@@ -77,3 +77,42 @@ type GetFirstArg<T> = any;
 const prefs: GetFirstArg<typeof createOrder> = {}
  
 createOrder(prefs) */
+
+
+/*----------The infer keyword--------*/
+
+/**
+ * If the type `P` passed in is some kind of `PromiseLike<T>` 
+ * (where `T` is a new type param), extract `T` and return it.
+ * If `P` is not some subtype of `PromiseLike<any>`, pass the 
+ * type `P` straight through and return it 
+ */
+type UnwrapPromise<P> = P extends PromiseLike<infer T> ? T : P;
+ 
+type test1 = UnwrapPromise<Promise<string>>
+// type test1 = string
+
+type test2 = UnwrapPromise<Promise<[string[], number[]]>>
+// type test2 = [string[], number[]]
+
+type test3 = UnwrapPromise<number>
+// type test3 = number
+
+
+
+type OneArgFn<A = any> = (firstArg: A, ..._args: any[]) => void
+type GetFirstArg<T extends OneArgFn> 
+    = T extends OneArgFn
+        ? string[]
+        : never;
+ 
+// Test case
+function foo(x: string, y: number) {return null}
+         
+// function foo(x: string, y: number): null
+// Should be string[]
+type t1 = GetFirstArg<typeof foo>
+     
+// type t1 = string[]
+
+
