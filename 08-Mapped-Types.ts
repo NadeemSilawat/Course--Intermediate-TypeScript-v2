@@ -45,9 +45,9 @@ type Fruit = {
     + type MyRecord<K extends keyof any, V> = { [Key in K]: V }
  */
 
-    type AnyPossibleKey = keyof any
+    // type AnyPossibleKey = keyof any
 
-    type MyRecord<K extends keyof any, V> = { [Key in K]: V }
+    // type MyRecord<K extends keyof any, V> = { [Key in K]: V }
 
 
     /**
@@ -57,4 +57,54 @@ type Fruit = {
 //     [P in K]: T
 //   }
   
+
+/* Use with indexed access types */
+
+
+
+// NOte that we’ve introduced a "Key" term in the mapped type
+/* 
+type MyRecord<K extends keyof any, V> = { [Key in K]: V }
+
+type PartOfWindow = {
+          
+    // type PartOfWindow = {
+    //     document: Document;
+    //     navigator: Navigator;
+    //     setTimeout: (handler: TimerHandler, timeout?: number | undefined, ...arguments: any[]) => number;
+    }
+      [Key in
+        | "document"
+        | "navigator"
+        | "setTimeout"]: Window[Key]
+    } */
+
+
+
+        /* ---------Template literal types---------- */
+
+        type ArtFeatures = "cabin" | "tree" | "sunset"
+type Colors =
+  | "darkSienna"
+  | "sapGreen"
+  | "titaniumWhite"
+  | "prussianBlue"
+  
+  
+  type ArtMethodNames = `paint_${Colors}_${ArtFeatures}`
+  
+  
+/* 
+    TypeScript provides a few special types you can use within these template literal types
+
+    UpperCase
+    LowerCase
+    Capitalize
+    Uncapitalize
+*/
+
+// type ArtMethodNames =
+//   `paint${Capitalize<Colors>}${Capitalize<ArtFeatures>}`
+
+
 
