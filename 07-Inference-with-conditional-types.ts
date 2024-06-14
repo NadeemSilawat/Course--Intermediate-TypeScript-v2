@@ -116,3 +116,37 @@ type t1 = GetFirstArg<typeof foo>
 // type t1 = string[]
 
 
+/*----------Constraints on infer--------*/
+
+type GetFirstStringIshElement<T> = T extends readonly [
+    infer S,
+    ..._:any[]
+  ] ? S : never
+   
+  const t1 = ["success", 2, 1, 4] as const        
+//   const t1: readonly ["success", 2, 1, 4]
+
+  const t2 = [4, 54, 5] as const     
+//   const t2: readonly [4, 54, 5]
+
+  let firstT1: GetFirstStringIshElement<typeof t1>
+//   let firstT1: "success"
+
+  let firstT2: GetFirstStringIshElement<typeof t2>
+        
+//   let firstT2: 4
+  
+
+
+// type GetFirstStringIshElement<T> = T extends readonly [
+//     infer S extends string,
+//     ..._:any[]
+//   ] ? S : never
+   
+//   const t1 = ["success", 2, 1, 4] as const
+//   const t2 = [4, 54, 5] as const
+   
+//   let firstT1: GetFirstStringIshElement<typeof t1>
+        
+//   let firstT1: "success"
+//   let firstT2: GetFirstStringIshElement<typeof t2>
