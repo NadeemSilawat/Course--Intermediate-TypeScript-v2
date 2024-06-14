@@ -64,10 +64,11 @@ type TestTenWithTwo = IsLowNumber<10 | 2>
     
 /*---------------- Utility types that use conditional types----------- */
 
-// built-in utility types Extract and Exclude, which are implemented with conditional types
+// built-in utility types "Extract" and "Exclude", which are implemented with conditional types
 
 
-// Extract
+/*--------Extract--------*/
+
 
 
 type FavoriteColors =
@@ -99,5 +100,39 @@ type TupleColors
   = Extract<FavoriteColors, [number, number, number]>
 
 
+
+
+/*--------Exclude--------*/
+
+// Exclude is the opposite of Extract, in that it’s useful for obtaining the part of a type that’s not assignable to some other type
+
+
+  // a set of four specific things
+/* type FavoriteColors =
+| "dark sienna"
+| "van dyke brown"
+| "yellow ochre"
+| "sap green"
+| "titanium white"
+| "phthalo green"
+| "prussian blue"
+| "cadium yellow"
+| [number, number, number]
+| { red: number; green: number; blue: number }
+
+type NonStringColors = Exclude<FavoriteColors, string>
+  */
+
+
+/* How do these work? */
+
+/**
+ * Exclude from T those types that are assignable to U
+ */
+type Exclude<T, U> = T extends U ? never : T
+/**
+ * Extract from T those types that are assignable to U
+ */
+type Extract<T, U> = T extends U ? T : never
 
 
